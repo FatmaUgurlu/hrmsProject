@@ -6,28 +6,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+
 @Data
-@Table(name="job_positions")
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobPosition {
+@Table(name="cities")
 
+public class City {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	@Column(name="id")
-	private int id;
+	private int İd;
 	
-	@NotBlank(message="isim boş bırakılamaz.")
-	@Column(name="position")
-	private String position;
-	
-	
+	@Column(name="name")
+	private String name;
+
 }

@@ -12,22 +12,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
-@Table(name="job_positions")
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobPosition {
+@Table(name="graduations")
+public class Graduate {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	@Column(name="id")
 	private int id;
 	
-	@NotBlank(message="isim boş bırakılamaz.")
-	@Column(name="position")
-	private String position;
-	
-	
+	@NotBlank(message="Açıklama girilmesi gerekir.")
+	@Column(name="description")
+	private String description;
 }

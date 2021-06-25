@@ -1,6 +1,5 @@
 package kodlamaio.hrms.api.controllers;
 
-
 import java.util.List;
 
 import javax.validation.Valid;
@@ -12,33 +11,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.hrms.business.abstracts.JobPositionService;
+import kodlamaio.hrms.business.abstracts.GraduateService;
 import kodlamaio.hrms.core.results.DataResult;
 import kodlamaio.hrms.core.results.Result;
-import kodlamaio.hrms.entities.concretes.JobPosition;
-
-
+import kodlamaio.hrms.entities.concretes.Graduate;
 
 @RestController
-@RequestMapping("/api/jobpositions")
-public class JobPositionsController {
-
-	private JobPositionService jobPositionService;
+@RequestMapping("/api/graduate")
+public class GraduatesController {
+	
+	private GraduateService graduateService;
 
 	@Autowired
-	public JobPositionsController(JobPositionService jobPositionService) {
+	public GraduatesController(GraduateService graduateService) {
 		super();
-		this.jobPositionService = jobPositionService;
+		this.graduateService = graduateService;
 	}
-	
 	
 	@GetMapping("/getall")
-	public DataResult<List<JobPosition>> getAll(){
-		return this.jobPositionService.getAll();
+	public DataResult<List<Graduate>> getAll(){
+		return this.graduateService.getAll();
 	}
 	
+
 	@PostMapping("/add")
-	public Result add(@Valid @RequestBody JobPosition jobPosition) {
-		return this.jobPositionService.add(jobPosition);
+	public Result add(@Valid @RequestBody Graduate graduate) {
+		return this.graduateService.add(graduate);
 	}
 }

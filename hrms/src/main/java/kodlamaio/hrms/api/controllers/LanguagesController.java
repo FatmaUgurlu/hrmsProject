@@ -1,6 +1,5 @@
 package kodlamaio.hrms.api.controllers;
 
-
 import java.util.List;
 
 import javax.validation.Valid;
@@ -12,33 +11,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.hrms.business.abstracts.JobPositionService;
+import kodlamaio.hrms.business.abstracts.LanguageService;
 import kodlamaio.hrms.core.results.DataResult;
 import kodlamaio.hrms.core.results.Result;
-import kodlamaio.hrms.entities.concretes.JobPosition;
-
-
+import kodlamaio.hrms.entities.dtos.LanguageDto;
 
 @RestController
-@RequestMapping("/api/jobpositions")
-public class JobPositionsController {
+@RequestMapping("/api/language")
+public class LanguagesController {
 
-	private JobPositionService jobPositionService;
+	private LanguageService  languageService;
 
 	@Autowired
-	public JobPositionsController(JobPositionService jobPositionService) {
+	public LanguagesController(LanguageService languageService) {
 		super();
-		this.jobPositionService = jobPositionService;
+		this.languageService = languageService;
 	}
 	
-	
 	@GetMapping("/getall")
-	public DataResult<List<JobPosition>> getAll(){
-		return this.jobPositionService.getAll();
+	public DataResult<List<LanguageDto>> getAll(){
+		return this.languageService.getAll();
 	}
 	
 	@PostMapping("/add")
-	public Result add(@Valid @RequestBody JobPosition jobPosition) {
-		return this.jobPositionService.add(jobPosition);
+	public Result add(@Valid @RequestBody LanguageDto languageDto) {
+		return this.languageService.add(languageDto);
 	}
 }
